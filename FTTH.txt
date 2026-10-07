@@ -1,0 +1,118 @@
+package org.example;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.*;
+
+public class Main {
+
+    public void main(String[] args) throws Exception {
+
+//        String filePath = "FTTH.xlsx";
+//        Workbook workbook;
+//
+//        // 1. Read the workbook, then close the input stream immediately
+//        try (FileInputStream fis = new FileInputStream(filePath)) {
+//            workbook = new XSSFWorkbook(fis);
+//        }
+//
+//        Sheet sheet = workbook.getSheetAt(1); // second sheet
+//        Iterator<Row> rowIterator = sheet.iterator();
+//
+//        Row headerRow = null;
+//        if (rowIterator.hasNext()) {
+//            headerRow = rowIterator.next(); // header row
+//        }
+//
+//        // Add a header for the output column (e.g. column index 3)
+//        int outputColIndex = 3;
+//        if (headerRow != null) {
+//            Cell headerCell = headerRow.createCell(outputColIndex);
+//            headerCell.setCellValue("RESULT");
+//        }
+//
+//        while (rowIterator.hasNext()) {
+//            Row row = rowIterator.next();
+//
+//            String exchCode = getCellValue(row.getCell(0));
+//            String cabinetNo = getCellValue(row.getCell(1));
+//            String dpNo = getCellValue(row.getCell(2));
+//
+//            Call_APIs record = new Call_APIs();
+//            String result = record.getCabinetList(exchCode, cabinetNo, dpNo);
+//
+//            System.out.println(result);
+//
+//            // 2. Write the result into the same row, next column
+//            Cell resultCell = row.createCell(outputColIndex);
+//            resultCell.setCellValue(result);
+//        }
+//
+//        // 3. Save back to the same file
+//        try (FileOutputStream fos = new FileOutputStream(filePath)) {
+//            workbook.write(fos);
+//        }
+//
+//        workbook.close();
+//        System.out.println("Done. Results written to " + filePath);
+        String[] numbers = {
+                "5992901", "53785845", "6211043", "70642593", "57486563",
+                "5928542", "2772569", "78286912", "79793739", "7367260",
+                "72730006", "50122261", "151363315", "82414971", "63304461",
+                "135605129", "57130934", "66852489", "98594502", "5798107",
+                "136881883", "52058645", "2935767", "5883213", "55278630",
+                "5601502", "76586622", "3473279", "76654129", "74671564",
+                "59302349", "8253712", "6147532", "4885321", "139339265",
+                "126742209", "6577687", "3712992", "5939930", "7195651",
+                "76216173", "78407256", "156073904", "65073222", "6568553",
+                "62309091", "157167192", "1549397", "96987825", "67341204",
+                "4673658", "52444604", "155261801", "7698786", "54473249",
+                "139789215", "54591232", "56139856", "138637280", "60432154",
+                "57884793", "82662366", "66186134", "4060015", "6936017",
+                "54302102", "99581609", "6126178", "77807782", "126309830",
+                "7136107", "87272708", "81165624", "132261838", "60893635",
+                "5677001", "84513103", "4529621", "75067377", "8074964",
+                "6341532", "122023733", "149736174", "73381246", "3535647",
+                "151874234", "82513537", "160142685", "147594334", "4546883",
+                "5165623", "120626190", "55860207", "5801205", "3179182",
+                "7785375", "156996942", "145785842", "3527133", "137249179",
+                "62971209", "152605583", "78416931", "1352445", "65895961",
+                "71709575", "91834958", "1997814", "62742316", "70039620",
+                "125041357", "62742029", "58130592", "77167341", "61677213",
+                "80661600", "125122826", "7084306", "146905039", "66083770",
+                "53100068", "3982808", "1819121", "120688483", "60854822",
+                "6716952", "7090090", "4021356"
+        };
+//        Call_APIs log = new Call_APIs();
+//
+//
+//        for (String s : numbers){
+//            String res = log.FindSessionByUserNameAAA(s);
+//            if (res.startsWith("true")) {
+//                String session = log.GetSessionlogsSAList(s);
+//                if (session.startsWith("false")){
+//                    System.out.println("Line ID " + s + "  " + session);
+//                }
+//            }
+//        }
+
+        Data_base_conn d = new Data_base_conn();
+        List<String> ServiceNu = new ArrayList<>();
+        ServiceNu = d.GetAllTeleNu();
+        System.out.println(ServiceNu.size());
+
+    }
+
+//    static String getCellValue(Cell cell) {
+//        if (cell == null) return "";
+//        switch (cell.getCellType()) {
+//            case STRING: return cell.getStringCellValue().trim();
+//            case NUMERIC: return String.valueOf((long) cell.getNumericCellValue());
+//            default: return "";
+//        }
+//    }
+}
